@@ -1,0 +1,188 @@
+.Navbar {
+    background-color: rgb(205, 19, 118);
+    width: 100%;
+    margin: auto;
+    padding-left:  30px ;
+    padding-right: 30px;
+  }
+  
+.containerNavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: auto;
+    margin: auto;
+  }
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+.navlinkNavbar {
+    text-decoration: none;
+    text-decoration-line: none;
+    color: white;
+    background-attachment: fixed;
+  }
+
+.home {
+    text-align: center;
+  }
+  
+.homeImg {
+  background-image: url("../src/assets/img/BAnner3.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 20rem; 
+}
+
+.category{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+}
+
+.subcategory{
+    padding: 50px;
+}
+
+.novedades{
+  display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px; 
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden; 
+  padding: 10px; 
+  text-align: center; 
+  background-color: #fff; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.product-image {
+  width: 80%; 
+  height: 200px;
+  object-fit: cover; 
+  display: block;
+  margin: 0 auto; 
+}
+
+.product-buttons {
+  margin-top: 10px; 
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-details {
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-details:hover {
+  background-color: #0056b3;
+}
+
+.btn-add-to-cart {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #218838;
+}
+
+.photo1{
+  padding: 50px;
+}
+
+.btn{
+  margin: 10px;
+}
+
+.ContainerRegister {
+    background-color: #dae8d0;
+    width: 35%;
+    height: 70vh;
+    border-radius: 3rem;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+.formRegister {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 3rem;
+    padding: 2rem;
+  }
+
+.cards{
+    padding: 3rem; 
+}
+
+.photo{
+  width: 40;
+  height: 40;
+}
+
+.login{
+    padding: 3rem;   
+}
+
+.ContainerPublish{
+  margin: 70px;
+}
+
+.title1{
+text-align: center;
+margin: 40px;
+}
+.footer{
+background-color: rgba(255, 0, 0, 0.167);
+color: white;
+text-align: center;
+}
+
+
+.imgDetails img{
+  width: 30%;
+  height: 30%; 
+  margin:50px ;
+  
+}
+
+.description{
+padding-left: 20px;
+;
+}
+
+.footer2{
+background-color: rgb(205, 19, 118);
+color: white;
+}
