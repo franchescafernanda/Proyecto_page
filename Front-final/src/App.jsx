@@ -10,6 +10,7 @@ import Footer from './views/Footer.jsx';
 import ProductDetails from "./views/ProductDetails.jsx";
 import Profile from "./views/Profile.jsx";
 import Orders from "./views/Orders.jsx";
+import Cart from "./views/Cart.jsx";
 import { CartProvider } from './views/CartContext.jsx';
 import "./App.css";
 
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/productDetails/:id" element={<ProductDetails />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
