@@ -10,7 +10,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await api.get(`https://front-proyectofinal-5o94.onrender.com/api/productos/${id}`); //corregir porque no me esta funcionando
+        const response = await api.get(`/productos/${id}`); //corregir porque no me esta funcionando
         console.log('Product details:', response.data);
         setProduct(response.data);
       } catch (error) {

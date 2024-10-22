@@ -11,7 +11,7 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('https://front-proyectofinal-5o94.onrender.com/api/productos'); //Arrglar
+        const response = await fetch('http://localhost:3000/api/productos'); //Arrglar
         if (!response.ok) throw new Error('Network response was not ok');
         const data = await response.json();
         setProducts(data);

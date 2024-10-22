@@ -12,45 +12,45 @@ app.get('/api/products', (req, res) => {
     res.json([
         { 
             id: 1, 
-            name: "Cama para perro", 
-            description: "Cama acolchonada, 100% algodón", 
-            price: 12000, 
-            imageUrl: "https://dojiw2m9tvv09.cloudfront.net/11787/product/dogitcamarectangular7043.jpg"
+            name: "Bluza juvenil", 
+            description: "Bluza de dama, 100% algodón", 
+            price: 8000, 
+            imageUrl: "https://yoyojeans.vteximg.com.br/arquivos/ids/188111/BLUSA-32137204-AZUL-EST_1.jpg?v=638445751310300000?1728345600086"
         },
         { 
             id: 2, 
-            name: "Juguete para gato", 
-            description: "Juguete interactivo con plumas", 
-            price: 8000, 
-            imageUrl: "https://ss345.liverpool.com.mx/xl/1103149122.jpg"
+            name: "Abrigo dama", 
+            description: "Abrigo color beigh", 
+            price: 15000, 
+            imageUrl: "https://http2.mlstatic.com/D_NQ_NP_860702-CBT71844186113_092023-O.webp"
         },
         {   
             id: 3, 
-            name: "Juguete", 
-            description: "Juguete para perro", 
-            price: 3500, 
-            imageUrl: "https://space-theprofit.nyc3.cdn.digitaloceanspaces.com/public/Products/juguete-para-perros-forma-de-hueso_6579285a435f1.webp" 
+            name: "Tacon", 
+            description: "Tacones mujer, tono verde", 
+            price: 20000, 
+            imageUrl: "https://weide.cl/cdn/shop/products/P-GH52Z_verde-1.webp?v=1678250556&width=1500" 
         },
         {   
             id: 4, 
-            name: "Rascador", 
-            description: "Juguete para gato", 
-            price: 10000, 
-            imageUrl: "https://http2.mlstatic.com/D_NQ_NP_896438-MLU76434050926_052024-O.webp" 
+            name: "Mini-Falda", 
+            description: "Falda corta, material 100% algodón", 
+            price: 6500, 
+            imageUrl: "https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaCO/120471537_01/w=800,h=800,fit=pad" 
         },
         {   
             id: 5, 
-            name: "Peinetas", 
-            description: "Juguete para perro", 
-            price: 5000, 
-            imageUrl: "https://space-theprofit.nyc3.cdn.digitaloceanspaces.com/public/Products/pack-de-accesorios-de-aseo-para-mascotas_6581a594360b5.webp"
+            name: "Zapatillas", 
+            description: "Zapatillas con plataforma", 
+            price: 15000,
+            imageUrl: "https://www.dimarsa.cl/media/catalog/product/m/a/marcasskechers73690-crl-rosado1jpeg_0_6.jpg"
         },
         {   
             id: 6, 
-            name: "Arnes para conejo", 
-            description: "Accesorios para conejos", 
-            price: 20000, 
-            imageUrl: "https://faunasalud.cl/wp-content/uploads/2022/11/137-0103.jpg" 
+            name: "Conjunto dama",
+            description: "Conjunto negro sexy",
+            price: 11000,
+            imageUrl: "https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaCL/128835811_01/w=1500,h=1500,fit=pad" 
         },
     ]);
 });
@@ -60,45 +60,45 @@ app.get('/api/products/:id', (req, res) => {
     const products = [
         { 
             id: 1, 
-            name: "Cama para perro", 
-            description: "Cama acolchonada, 100% algodón", 
-            price: 12000, 
-            imageUrl: "https://dojiw2m9tvv09.cloudfront.net/11787/product/dogitcamarectangular7043.jpg"
+            name: "Bluza juvenil", 
+            description: "Bluza de dama, 100% algodón", 
+            price: 8000, 
+            imageUrl: "https://yoyojeans.vteximg.com.br/arquivos/ids/188111/BLUSA-32137204-AZUL-EST_1.jpg?v=638445751310300000?1728345600086"
         },
         { 
             id: 2, 
-            name: "Juguete para gato", 
-            description: "Juguete interactivo con plumas", 
-            price: 8000, 
-            imageUrl: "https://puppieshouse.cl/1072-large_default/juguete-para-gatos-con-pluma-y-pelota.jpg"
+            name: "Abrigo dama", 
+            description: "Abrigo color beigh", 
+            price: 15000, 
+            imageUrl: "https://http2.mlstatic.com/D_NQ_NP_860702-CBT71844186113_092023-O.webp"
         },
         {   
             id: 3, 
-            name: "Juguete", 
-            description: "Juguete para perro", 
-            price: 3500, 
-            imageUrl: "https://space-theprofit.nyc3.cdn.digitaloceanspaces.com/public/Products/juguete-para-perros-forma-de-hueso_6579285a435f1.webp" 
+            name: "Tacon", 
+            description: "Tacones mujer, tono verde", 
+            price: 20000, 
+            imageUrl: "https://weide.cl/cdn/shop/products/P-GH52Z_verde-1.webp?v=1678250556&width=1500" 
         },
         {   
             id: 4, 
-            name: "Rascador", 
-            description: "Juguete para gato", 
-            price: 10000, 
-            imageUrl: "https://http2.mlstatic.com/D_NQ_NP_896438-MLU76434050926_052024-O.webp" 
+            name: "Mini-Falda", 
+            description: "Falda corta, material 100% algodón", 
+            price: 6500, 
+            imageUrl: "https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaCO/120471537_01/w=800,h=800,fit=pad" 
         },
         {   
             id: 5, 
-            name: "Peinetas", 
-            description: "Juguete para perro", 
-            price: 5000, 
-            imageUrl: "https://space-theprofit.nyc3.cdn.digitaloceanspaces.com/public/Products/pack-de-accesorios-de-aseo-para-mascotas_6581a594360b5.webp"
+            name: "Zapatillas", 
+            description: "Zapatillas con plataforma", 
+            price: 15000,
+            imageUrl: "https://www.dimarsa.cl/media/catalog/product/m/a/marcasskechers73690-crl-rosado1jpeg_0_6.jpg"
         },
         {   
             id: 6, 
-            name: "Arnes para conejo", 
-            description: "Accesorios para conejos", 
-            price: 20000, 
-            imageUrl: "https://faunasalud.cl/wp-content/uploads/2022/11/137-0103.jpg" 
+            name: "Conjunto dama",
+            description: "Conjunto negro sexy",
+            price: 11000,
+            imageUrl: "https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaCL/128835811_01/w=1500,h=1500,fit=pad" 
         },
     ];
 
