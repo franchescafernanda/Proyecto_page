@@ -1,4 +1,3 @@
-//Agregado nuevo
 import React from "react";
 import {
   Dropdown,
@@ -18,6 +17,9 @@ const UserDropdown = () => {
       <DropdownMenu>
         <LinkContainer to="/profile">
           <DropdownItem>Mi Perfil</DropdownItem>
+        </LinkContainer>
+        <LinkContainer to="/addProducts">
+          <DropdownItem>Publicaciones</DropdownItem>
         </LinkContainer>
         <LinkContainer to="/orders">
           <DropdownItem>Mis Ordenes</DropdownItem>

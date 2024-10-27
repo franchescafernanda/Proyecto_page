@@ -55,6 +55,7 @@ app.get('/api/products', (req, res) => {
     ]);
 });
 
+// Endpoint para obtener un producto por ID
 app.get('/api/products/:id', (req, res) => {
     const { id } = req.params;
     const products = [
@@ -108,6 +109,18 @@ app.get('/api/products/:id', (req, res) => {
     } else {
         res.status(404).json({ message: 'Product not found' });
     }
+});
+
+// Nuevo endpoint para agregar un producto
+app.post('/api/products', (req, res) => {
+    const newProduct = {
+        id: Date.now(), // Genera un ID único
+        ...req.body
+    };
+
+    // Aquí podrías agregar lógica para guardar el producto en una base de datos
+    // Por ahora, simplemente lo devolveremos como respuesta
+    res.status(201).json(newProduct);
 });
 
 app.listen(port, () => {

@@ -8,6 +8,8 @@ import Products from "./views/Products.jsx";
 import NotFound from './views/NotFound';
 import Footer from './views/Footer.jsx';
 import ProductDetails from "./views/ProductDetails.jsx";
+import AddProduct from "./views/AddProducts.jsx";
+import MyProfile from "./views/MyProfile.jsx"; //Solo es para un ejemplo
 import Profile from "./views/Profile.jsx";
 import Orders from "./views/Orders.jsx";
 import Cart from "./views/Cart.jsx";
@@ -26,6 +28,8 @@ const App = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/productDetails/:id" element={<ProductDetails />} />
+          <Route path="/addProducts" element={<AddProduct />} />
+          <Route path="/myprofile" element={<MyProfile />} /> {/* Solo es para un ejemplo */}
           <Route path="/orders" element={<Orders />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
