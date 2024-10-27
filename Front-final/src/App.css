@@ -169,6 +169,14 @@ color: white;
 text-align: center;
 }
 
+.footer .contactos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 
 .imgDetails img{
   width: 30%;
