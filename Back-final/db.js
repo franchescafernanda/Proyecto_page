@@ -71,7 +71,7 @@ const insert =() => {
 ('Tacon', 20000, 'Tacones mujer, tono verde','https://weide.cl/cdn/shop/products/P-GH52Z_verde-1.webp?v=1678250556&width=1500'),
 ('Mini-Falda', 6500, 'Falda corta, material 100% algodón','https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaCO/120471537_01/w=800,h=800,fit=pad'),
 ('Zapatillas', 15000, 'Zapatillas con plataforma','https://www.dimarsa.cl/media/catalog/product/m/a/marcasskechers73690-crl-rosado1jpeg_0_6.jpg'),
-('Conjunto dama', 11000, 'Conjunto negro sexy','https://faunasalud.cl/wp-content/uploads/2022/11/137-0103.jpg');`
+('Conjunto dama', 11000, 'Conjunto negro sexy','https://imagedelivery.net/4fYuQyy-r8_rpBpcY7lH_A/falabellaCL/128835811_01/w=1500,h=1500,fit=pad');`
 }
 
 const data_init_base=async() => {
