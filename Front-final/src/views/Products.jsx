@@ -29,7 +29,7 @@ const Products = () => {
 
     const handleAddToCart = (product) => {
         addToCart(product);
-        alert(`${product.nombre} ha sido agregado al carrito.`); // Asegúrate de usar 'nombre' si ese es el nombre de la propiedad en tu API
+        alert(`${product.nombre} ha sido agregado al carrito.`);
     };
 
     return (
@@ -45,9 +45,9 @@ const Products = () => {
                                 alt={product.nombre}
                             />
                             <Card.Body>
-                                <Card.Title>{product.nombre}</Card.Title> {/* Asegúrate de que 'nombre' sea la propiedad correcta */}
-                                <Card.Text>{product.descripcion}</Card.Text> {/* Asegúrate de que 'descripcion' sea la propiedad correcta */}
-                                <Card.Text>${product.precio}</Card.Text> {/* Asegúrate de que 'precio' sea la propiedad correcta */}
+                                <Card.Title>{product.nombre}</Card.Title>
+                                <Card.Text>{product.descripcion}</Card.Text>
+                                <Card.Text>${product.precio}</Card.Text>
                                 <Button
                                     className="buttonDetails"
                                     onClick={() => handleDetailsClick(product.id)}

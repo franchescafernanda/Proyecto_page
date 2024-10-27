@@ -14,15 +14,15 @@ const Cart = () => {
                 <Row>
                     {cart.map((item) => (
                         <Col key={item.id} sm={12} md={6} lg={4}>
-                            <Card className="mb-4">
+                            <Card className="mb-4 cart-card">
                                 <Card.Img
                                     variant="top"
-                                    src={item.image_url} // Asegúrate de que este campo exista
+                                    src={item.image_url}
                                     alt={item.name}
                                 />
-                                <Card.Body>
+                                <Card.Body className="cart-card-body">
                                     <Card.Title>{item.name}</Card.Title>
-                                    <Card.Text>Descripción: {item.description}</Card.Text> {/* Asegúrate de que este campo exista */}
+                                    <Card.Text>Descripción: {item.description}</Card.Text>
                                     <Card.Text>Cantidad: {item.quantity}</Card.Text>
                                     <Card.Text>Precio: ${item.price}</Card.Text>
                                     <Card.Text>Total: ${item.price * item.quantity}</Card.Text>
