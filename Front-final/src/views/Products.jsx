@@ -14,6 +14,7 @@ const Products = () => {
                 const response = await fetch('http://localhost:3000/api/productos');
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
+                /* console.log(data); */
                 setProducts(data);
             } catch (error) {
                 console.error('Error fetching products:', error);
@@ -24,7 +25,11 @@ const Products = () => {
     }, []);
 
     const handleDetailsClick = (productId) => {
-        navigate(`/productDetails/${productId}`);
+        if (productId) {
+            navigate(`/productDetails/${productId}`);
+        } else {
+            console.error('Product ID is undefined');
+        }
     };
 
     const handleAddToCart = (product) => {
@@ -36,7 +41,7 @@ const Products = () => {
         <Container className="cards">
             <Row>
                 {products.map((product) => (
-                    <Col key={product.id} sm={12} md={6} lg={4}>
+                    <Col key={product.id_productos} sm={12} md={6} lg={4}>
                         <Card className="mb-4">
                             <Card.Img
                                 className="photo"
@@ -50,7 +55,7 @@ const Products = () => {
                                 <Card.Text>${product.precio}</Card.Text>
                                 <Button
                                     className="buttonDetails"
-                                    onClick={() => handleDetailsClick(product.id)}
+                                    onClick={() => handleDetailsClick(product.id_productos)}
                                 >
                                     Ver más
                                 </Button>

@@ -1,3 +1,4 @@
+/*Navbar*/
 .Navbar {
     background-color: rgb(205, 19, 118);
     width: 100%;
@@ -28,6 +29,7 @@
     background-attachment: fixed;
   }
 
+/*Home*/
 .home {
     text-align: center;
   }
@@ -57,6 +59,8 @@
     align-items: center;
 }
 
+
+/*Productos*/
 .products-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -123,25 +127,6 @@
   margin: 10px;
 }
 
-.ContainerRegister {
-    background-color: #dae8d0;
-    width: 35%;
-    height: 70vh;
-    border-radius: 3rem;
-    padding: 2rem;
-    text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-  }
-
-.formRegister {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    gap: 3rem;
-    padding: 2rem;
-  }
-
 .cards{
     padding: 3rem; 
 }
@@ -154,8 +139,124 @@
   margin: 0 auto;
 }
 
-.login{
-    padding: 3rem;   
+
+/*Registro*/
+.register-form {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.register-form h2 {
+  text-align: center;
+  color: #333;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.register-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.register-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.register-form button:hover {
+  background-color: #0056b3;
+}
+
+.register-form p {
+  text-align: center;
+  color: red;
+}
+
+
+/*login*/
+.login {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login form h2 {
+  text-align: center;
+  color: #333;
+}
+
+.login input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.login input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.login button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login button:hover {
+  background-color: #0056b3;
+}
+
+.alert {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-info {
+  background-color: #cce5ff;
+  color: #004085;
 }
 
 .ContainerPublish{
@@ -249,6 +350,7 @@ margin: 40px;
   max-width: 400px;
 }
 
+/*Footer*/
 .footer{
   background-color: rgba(255, 0, 0, 0.167);
   color: white;

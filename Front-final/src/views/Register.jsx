@@ -1,98 +1,61 @@
-import React, { useState, useContext } from "react";
-import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
-  const [form, setForm] = useState({
-    name: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState(null);
-  const { register } = useContext(AuthContext);
-  const navigate = useNavigate();
+    const { registerUser } = useAuth();
+    const [nombre, setNombre] = useState('');
+    const [apellido, setApellido] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await register(form);
-      navigate("/");
-    } catch (error) {
-      setError("El registro falló, por favor intente nuevamente.");
-    }
-  };
+        try {
+            await registerUser(nombre, apellido, email, password);
+            alert('Usuario creado con éxito')
+        } catch (err) {
+            setError('Error al registrar el usuario.');
+        }
+    };
 
-  return (
-    <Container className="register">
-      <Row className="justify-content-md-center">
-        <Col md={6}>
-          <h1 className="text-center">REGISTRARSE</h1>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formName">
-              <Form.Label>Nombre:</Form.Label>
-              <Form.Control
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Ingrese su nombre"
-                required
-              />
-            </Form.Group>
-            <br/>
-            <Form.Group controlId="formLastName">
-              <Form.Label>Apellido:</Form.Label>
-              <Form.Control
-                type="text"
-                name="lastName"
-                value={form.lastName}
-                onChange={handleChange}
-                placeholder="Ingrese su apellido"
-                required
-              />
-            </Form.Group>
-            <br/>
-            <Form.Group controlId="formEmail">
-              <Form.Label>Correo electrónico:</Form.Label>
-              <Form.Control
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="Ingrese su correo electrónico"
-                required
-              />
-            </Form.Group>
-            <br/>
-            <Form.Group controlId="formPassword">
-              <Form.Label>Contraseña:</Form.Label>
-              <Form.Control
-                type="password"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                placeholder="Ingrese su contraseña"
-                required
-              />
-            </Form.Group>
-            <Button variant="primary" type="submit" className="mt-3">
-              Registrarse
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
-  );
+    return (
+        <form className="register-form" onSubmit={handleSubmit}>
+        <h2>Registrar Usuario</h2>
+        {error && <p>{error}</p>}
+        <input
+            type="text"
+            placeholder="Nombre"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            required
+        />
+        <input
+            type="text"
+            placeholder="Apellido"
+            value={apellido}
+            onChange={(e) => setApellido(e.target.value)}
+            required
+        />
+        <input
+            type="email"
+            placeholder="Correo Electrónico"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+        />
+        <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+        />
+        <button type="submit">Registrar</button>
+    </form>
+    );
 };
 
 export default Register;

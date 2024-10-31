@@ -1,6 +1,6 @@
 
 import React, { useContext } from "react";
-import { AuthContext } from "../context/AuthContext.jsx";
+import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const ButtonProducts = ({ to, children }) => {

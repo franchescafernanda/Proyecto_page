@@ -1,67 +1,55 @@
 import React, { useState, useContext } from "react";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  const [form, setForm] = useState({ email: "", password: "" });
-  const [error, setError] = useState(null);
-  const { login } = useContext(AuthContext);
-  const navigate = useNavigate();
+    const { loginUser, user } = useAuth()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [error, setError] = useState(null)
+    const [successMessage, setSuccessMessage] = useState(null)
+    const navigate = useNavigate()
 
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await login(form.email, form.password);
-    } catch (error) {
-      setError("Invalid email or password");
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setError(null)
+        setSuccessMessage(null)
+        try {
+            await loginUser(email, password)
+            setSuccessMessage('Usuario logueado con éxito')
+            navigate('/')
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error)
+            setError('Error al iniciar sesión, verifica tus credenciales')
+        }
     }
-  };
 
-  return (
+return (
     <Container className="login">
-      <Row className="justify-content-md-center">
-        <Col md={6}>
-          <h1 className="text-center">INICIAR SESIÓN</h1>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formEmail">
-              <Form.Label>Correo electrónico:</Form.Label>
-              <Form.Control
+        <form onSubmit={handleSubmit}>
+        <h2>Registrar Usuario</h2>
+            <input
                 type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
                 required
-              />
-            </Form.Group>
-            <br/>
-            <Form.Group controlId="formPassword">
-              <Form.Label>Contraseña:</Form.Label>
-              <Form.Control
+            />
+            <input
                 type="password"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Contraseña"
                 required
-              />
-            </Form.Group>
-            <Button style={{ backgroundColor: '#ff69b4', borderColor: '#ff69b4' }} 
-            type= "submit" className="mt-3 text-white"> Ingresar</Button>
-          </Form>
-        </Col>
-      </Row>
+            />
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        {successMessage && <div className="alert alert-success">{successMessage}</div>}
+        {error && <div className="alert alert-info">{error}</div>}
+        {user && <div>Usuario logueado: {user.nombre} {user.apellido}</div>} 
     </Container>
-  );
+);
 };
 
 export default Login;

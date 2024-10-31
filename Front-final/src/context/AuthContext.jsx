@@ -1,44 +1,77 @@
-import React, { createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import api from "../config/configAxios.jsx";
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import api from '../config/configAxios'
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+export const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [token, setToken] = useState(localStorage.getItem('token'))
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      api.defaults.headers.Authorization = `Bearer ${token}`;
-      // agregar el coso para recorrer la base de datos
+    useEffect(() => {
+        if (token) {
+            const fetchUserData = async () => {
+                try {
+                    const response = await api.get('/auth/user', {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    });
+                    setUser(response.data);
+                } catch (error) {
+                    console.error('Error al obtener los datos del usuario:', error);
+                }
+            };
+            fetchUserData();
+        }
+    }, [token]);
+
+    const registerUser = async (nombre, apellido, email, password) => {
+        try {
+            const response = await api.post('/auth/register', {
+                nombre,
+                apellido,
+                email,
+                password,
+            });
+            setUser(response.data.user);
+            setToken(response.data.token);
+            localStorage.setItem('token', response.data.token); 
+        } catch (error) {
+            console.error('Error al registrar el usuario:', error);
+            throw error;
+        }
+    };
+
+    const loginUser = async (email, password) => {
+        try {
+            const response = await api.post('/auth/login', {
+                email,
+                password,
+            })
+            setUser(response.data.user)
+            setToken(response.data.token)
+            localStorage.setItem('token', response.data.token)
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error)
+            throw error
+        }
     }
-  }, []);
 
-  const login = async (email, password) => {
-    const response = await api.post("/auth/login", { email, password });
-    const { token, user } = response.data;
-    localStorage.setItem("token", token);
-    api.defaults.headers.Authorization = `Bearer ${token}`;
-    setUser(user);
-    navigate("/");
-  };
+    const logoutUser = () => {
+        setUser(null)
+        setToken(null)
+        localStorage.removeItem('token')
+    }
 
-  const register = async (form) => {
-    const response = await api.post("/auth/register", form);
-    const { token, user } = response.data;
-    localStorage.setItem("token", token);
-    api.defaults.headers.Authorization = `Bearer ${token}`;
-    setUser(user);
-    navigate("/");
-  };
-
-  return (
-    <AuthContext.Provider value={{ user, login, register }}>
-      {children}
-    </AuthContext.Provider>
-  );
+    return (
+        <AuthContext.Provider value={{ user, token, registerUser, loginUser, logoutUser }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
-export default AuthProvider;
+export const useAuth = () => {
+    return useContext(AuthContext);
+};
+
+export { AuthContext }
