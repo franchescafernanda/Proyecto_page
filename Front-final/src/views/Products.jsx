@@ -16,7 +16,7 @@ const Products = () => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
                 setProducts(data);
-                // Inicializa las cantidades en 0 para cada producto
+                // Inicia las cantidades en 0 para cada producto
                 const initialQuantities = {};
                 data.forEach(product => {
                     initialQuantities[product.id_productos] = 0;

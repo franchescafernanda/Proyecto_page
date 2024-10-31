@@ -20,13 +20,13 @@ export const CartProvider = ({ children }) => {
                         : item
                 );
             }
-            // Si el producto no existe, agrega el nuevo producto al carrito con todos los campos necesarios
+            // Si el producto no existe, agrega el nuevo producto al carrito
             return [...prevCart, { 
-                id: product.id_productos, // Asegúrate de que el ID sea correcto
-                name: product.nombre, // Asegúrate de que el nombre sea correcto
-                description: product.descripcion, // Asegúrate de que la descripción sea correcta
-                price: product.precio, // Asegúrate de que el precio sea correcto
-                image_url: product.image_url, // Asegúrate de que la URL de la imagen sea correcta
+                id: product.id_productos, // Asegura de que el ID este bien
+                name: product.nombre, // Asegura de que el nombre sea correcto
+                description: product.descripcion, // Asegura de que la descripción sea correcta
+                price: product.precio, // Asegura de que el precio sea correcto
+                image_url: product.image_url, // Asegura de que la URL de la imagen sea correcta
                 quantity: product.quantity // Usa la cantidad proporcionada
             }];
         });
@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
             const existingProduct = prevCart.find(item => item.id === productId);
             if (existingProduct) {
                 if (existingProduct.quantity > 1) {
-                    // Si hay más de una unidad, solo decrementa la cantidad
+                    // Si hay más de una unidad, solo disminuye la cantidad
                     return prevCart.map(item =>
                         item.id === productId
                             ? { ...item, quantity: item.quantity - 1 }
