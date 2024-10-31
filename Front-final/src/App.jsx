@@ -13,6 +13,7 @@ import MyProfile from "./views/MyProfile";
 import Profile from "./views/Profile";
 import Orders from "./views/Orders";
 import Cart from "./views/Cart";
+import Checkout from "./views/Checkout";
 import { CartProvider } from './views/CartContext';
 import "./App.css";
 import { AuthProvider } from "./context/AuthContext";
@@ -32,7 +33,7 @@ const App = () => {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/productDetails/:id" element={<ProductDetails />} />
                 <Route path="/addProducts" element={<AddProduct />} />
-                <Route path="/myprofile" element={<MyProfile />} /> {/* Solo es para un ejemplo */}
+                <Route path="/checkout" component={Checkout} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="*" element={<NotFound />} />

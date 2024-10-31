@@ -11,12 +11,12 @@ export const CartProvider = ({ children }) => {
 
     const addToCart = (product) => {
         setCart((prevCart) => {
-            const existingProduct = prevCart.find(item => item.id === product.id);
+            const existingProduct = prevCart.find(item => item.id === product.id_productos);
             if (existingProduct) {
                 // Si el producto ya existe, solo incrementa la cantidad
                 return prevCart.map(item =>
-                    item.id === product.id
-                        ? { ...item, quantity: item.quantity + 1 }
+                    item.id === product.id_productos
+                        ? { ...item, quantity: item.quantity + product.quantity } // Usa la cantidad del producto
                         : item
                 );
             }
@@ -27,13 +27,29 @@ export const CartProvider = ({ children }) => {
                 description: product.descripcion, // Asegúrate de que la descripción sea correcta
                 price: product.precio, // Asegúrate de que el precio sea correcto
                 image_url: product.image_url, // Asegúrate de que la URL de la imagen sea correcta
-                quantity: 1 // Inicializa la cantidad en 1
+                quantity: product.quantity // Usa la cantidad proporcionada
             }];
         });
     };
 
     const removeFromCart = (productId) => {
-        setCart((prevCart) => prevCart.filter(item => item.id !== productId));
+        setCart((prevCart) => {
+            const existingProduct = prevCart.find(item => item.id === productId);
+            if (existingProduct) {
+                if (existingProduct.quantity > 1) {
+                    // Si hay más de una unidad, solo decrementa la cantidad
+                    return prevCart.map(item =>
+                        item.id === productId
+                            ? { ...item, quantity: item.quantity - 1 }
+                            : item
+                    );
+                } else {
+                    // Si es la última unidad, elimina el producto del carrito
+                    return prevCart.filter(item => item.id !== productId);
+                }
+            }
+            return prevCart;
+        });
     };
 
     const updateQuantity = (productId, quantity) => {
@@ -50,8 +66,13 @@ export const CartProvider = ({ children }) => {
         return cart.reduce((total, item) => total + item.price * item.quantity, 0);
     };
 
+    // Nueva función para verificar si un producto ya está en el carrito
+    const isProductInCart = (productId) => {
+        return cart.some(item => item.id === productId);
+    };
+
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, getTotal }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, getTotal, isProductInCart }}>
             {children}
         </CartContext.Provider>
     );

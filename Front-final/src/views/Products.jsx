@@ -5,6 +5,7 @@ import { useCart } from "../views/CartContext";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
+    const [quantities, setQuantities] = useState({}); // Estado para las cantidades
     const navigate = useNavigate();
     const { addToCart } = useCart();
 
@@ -14,8 +15,13 @@ const Products = () => {
                 const response = await fetch('http://localhost:3000/api/productos');
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
-                /* console.log(data); */
                 setProducts(data);
+                // Inicializa las cantidades en 0 para cada producto
+                const initialQuantities = {};
+                data.forEach(product => {
+                    initialQuantities[product.id_productos] = 0;
+                });
+                setQuantities(initialQuantities);
             } catch (error) {
                 console.error('Error fetching products:', error);
             }
@@ -33,8 +39,31 @@ const Products = () => {
     };
 
     const handleAddToCart = (product) => {
-        addToCart(product);
-        alert(`${product.nombre} ha sido agregado al carrito.`);
+        const quantity = quantities[product.id_productos];
+        if (quantity > 0) {
+            addToCart({ ...product, quantity }); // Agrega la cantidad al producto
+            alert(`${product.nombre} ha sido agregado al carrito.`);
+            setQuantities({ ...quantities, [product.id_productos]: 0 }); // Reinicia la cantidad después de agregar
+        } else {
+            alert('Por favor, selecciona una cantidad mayor a 0.');
+        }
+    };
+
+    const increaseQuantity = (productId) => {
+        setQuantities((prevQuantities) => ({
+            ...prevQuantities,
+            [productId]: prevQuantities[productId] + 1,
+        }));
+    };
+
+    const decreaseQuantity = (productId) => {
+        setQuantities((prevQuantities) => {
+            const newQuantity = prevQuantities[productId] - 1;
+            return {
+                ...prevQuantities,
+                [productId]: newQuantity < 0 ? 0 : newQuantity, // No permitir cantidades negativas
+            };
+        });
     };
 
     return (
@@ -53,6 +82,11 @@ const Products = () => {
                                 <Card.Title>{product.nombre}</Card.Title>
                                 <Card.Text>{product.descripcion}</Card.Text>
                                 <Card.Text>${product.precio}</Card.Text>
+                                <div className="quantity-controls">
+                                    <Button variant="secondary" onClick={() => decreaseQuantity(product.id_productos)}>-</Button>
+                                    <span>{quantities[product.id_productos]}</span>
+                                    <Button variant="secondary" onClick={() => increaseQuantity(product.id_productos)}>+</Button>
+                                </div>
                                 <Button
                                     className="buttonDetails"
                                     onClick={() => handleDetailsClick(product.id_productos)}
