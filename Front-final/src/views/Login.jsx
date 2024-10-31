@@ -28,7 +28,7 @@ const Login = () => {
 return (
     <Container className="login">
         <form onSubmit={handleSubmit}>
-        <h2>Registrar Usuario</h2>
+        <h2>Iniciar sesión</h2>
             <input
                 type="email"
                 value={email}
