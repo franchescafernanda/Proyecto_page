@@ -61,7 +61,7 @@ const Products = () => {
             const newQuantity = prevQuantities[productId] - 1;
             return {
                 ...prevQuantities,
-                [productId]: newQuantity < 0 ? 0 : newQuantity, // No permitir cantidades negativas
+                [productId]: newQuantity < 0 ? 0 : newQuantity, // No permitir - cantidad de las que existen
             };
         });
     };
@@ -87,6 +87,7 @@ const Products = () => {
                                     <span>{quantities[product.id_productos]}</span>
                                     <Button variant="secondary" onClick={() => increaseQuantity(product.id_productos)}>+</Button>
                                 </div>
+                                <div className="button-container">
                                 <Button
                                     className="buttonDetails"
                                     onClick={() => handleDetailsClick(product.id_productos)}
@@ -99,6 +100,7 @@ const Products = () => {
                                 >
                                     Agregar al carrito
                                 </Button>
+                                </div>
                             </Card.Body>
                         </Card>
                     </Col>

@@ -139,6 +139,62 @@
   margin: 0 auto;
 }
 
+/*btn +-*/
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.quantity-controls button {
+  background-color: #f258aa;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover {
+  background-color: #009ACD;
+}
+
+.quantity-controls span {
+  font-size: 16px;
+  min-width: 30px;
+  text-align: center;
+}
+
+/*btn ver +*/
+.button-container {
+  display: flex; /* Utiliza flexbox para alinear los botones */
+  justify-content: center; /* Centra horizontalmente los botones */
+  gap: 10px; /* Espaciado entre los botones */
+}
+
+.buttonDetails, 
+.button-container button {
+  font-size: 14px; /* Tamaño de la fuente más pequeño */
+  padding: 5px 10px; /* Espaciado interno más pequeño */
+  border-radius: 4px; /* Bordes redondeados */
+  transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.buttonDetails {
+  background-color: #f258aa; /* Color de fondo para el botón "Ver más" */
+  color: white; /* Color del texto */
+  border: 1px solid #ccc; /* Borde gris claro */
+}
+
+.button-container button {
+  background-color: #f258aa; /* Color rosa para el botón "Agregar al carrito" */
+  color: white; /* Color del texto en blanco */
+  border: none; /* Sin borde */
+}
+
+
 
 /*Registro*/
 .register-form {
@@ -409,6 +465,10 @@ margin: 40px;
   width: 100%;
   max-width: 400px;
 }
+
+/*pago*/
+
+
 
 /*Footer*/
 .footer{

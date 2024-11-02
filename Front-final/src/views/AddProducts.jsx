@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
+import { useAuth } from '../context/AuthContext';
 
 const AddProducts = () => {
+    const { user } = useAuth();
     const [nombre, setNombre] = useState('');
     const [precio, setPrecio] = useState('');
     const [descripcion, setDescripcion] = useState('');
@@ -39,10 +41,15 @@ const AddProducts = () => {
         }
     };
 
+    // verifica si la sesion esta iniciada
+    if (!user) {
+        return <Alert variant="warning">Debes iniciar sesión para agregar un producto.</Alert>;
+    }
+
     return (
         <Container className="my-5">
             <h2 className="text-center">Agregar Producto</h2>
-            <Form onSubmit={handleSubmit} className="w-50 mx-auto"> {/* Clases de Bootstrap */}
+            <Form onSubmit={handleSubmit} className="w-50 mx-auto">
                 {error && <Alert variant="danger">{error}</Alert>}
                 {success && <Alert variant="success">{success}</Alert>}
 
