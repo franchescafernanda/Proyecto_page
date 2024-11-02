@@ -3,8 +3,8 @@ import { Container, Form, Button, Row } from 'react-bootstrap';
 
 const Checkout = () => {
     return (
-        <Container>
-            <h2>Página de Pago</h2>
+        <Container className='checkout'>
+            <h2>Realiza tú pago</h2>
             <Form>
                 <Form.Group controlId="formCardHolder">
                     <Form.Label>Nombre del Titular</Form.Label>

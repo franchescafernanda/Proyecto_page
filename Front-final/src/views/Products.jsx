@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../views/CartContext";
+import { useAuth } from "../context/AuthContext";
 
 const Products = () => {
     const [products, setProducts] = useState([]);
-    const [quantities, setQuantities] = useState({}); // Estado para las cantidades
+    const [quantities, setQuantities] = useState({});
     const navigate = useNavigate();
     const { addToCart } = useCart();
+    const { user } = useAuth(); // Obtiene el usuario del contexto de autenticación
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -16,7 +18,6 @@ const Products = () => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
                 setProducts(data);
-                // Inicia las cantidades en 0 para cada producto
                 const initialQuantities = {};
                 data.forEach(product => {
                     initialQuantities[product.id_productos] = 0;
@@ -39,11 +40,17 @@ const Products = () => {
     };
 
     const handleAddToCart = (product) => {
+        if (!user) {
+            alert('Por favor, inicia sesión para agregar productos al carrito.');
+            navigate('/login'); // envia al usuario a iniciar de sesión
+            return;
+        }
+        
         const quantity = quantities[product.id_productos];
         if (quantity > 0) {
-            addToCart({ ...product, quantity }); // Agrega la cantidad al producto
+            addToCart({ ...product, quantity });
             alert(`${product.nombre} ha sido agregado al carrito.`);
-            setQuantities({ ...quantities, [product.id_productos]: 0 }); // Reinicia la cantidad después de agregar
+            setQuantities({ ...quantities, [product.id_productos]: 0 });
         } else {
             alert('Por favor, selecciona una cantidad mayor a 0.');
         }
@@ -61,7 +68,7 @@ const Products = () => {
             const newQuantity = prevQuantities[productId] - 1;
             return {
                 ...prevQuantities,
-                [productId]: newQuantity < 0 ? 0 : newQuantity, // No permitir - cantidad de las que existen
+                [productId]: newQuantity < 0 ? 0 : newQuantity,
             };
         });
     };
@@ -88,18 +95,18 @@ const Products = () => {
                                     <Button variant="secondary" onClick={() => increaseQuantity(product.id_productos)}>+</Button>
                                 </div>
                                 <div className="button-container">
-                                <Button
-                                    className="buttonDetails"
-                                    onClick={() => handleDetailsClick(product.id_productos)}
-                                >
-                                    Ver más
-                                </Button>
-                                <Button 
-                                    variant="primary"
-                                    onClick={() => handleAddToCart(product)}
-                                >
-                                    Agregar al carrito
-                                </Button>
+                                    <Button
+                                        className="buttonDetails"
+                                        onClick={() => handleDetailsClick(product.id_productos)}
+                                    >
+                                        Ver más
+                                    </Button>
+                                    <Button 
+                                        variant="primary"
+                                        onClick={() => handleAddToCart(product)}
+                                    >
+                                        Agregar al carrito
+                                    </Button>
                                 </div>
                             </Card.Body>
                         </Card>
