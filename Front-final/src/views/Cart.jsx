@@ -5,18 +5,17 @@ import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
     const { cart, removeFromCart, getTotal } = useCart();
-    const navigate = useNavigate(); // Inicializa useNavigate
+    const navigate = useNavigate();
 
     const handleCheckout = () => {
-        // me envia a la página de pago
         navigate('/checkout');
     };
 
     return (
         <Container>
-            <h2>Carrito de Compras</h2>
+            <h2 className="text-center">Carrito de Compras</h2>
             {cart.length === 0 ? (
-                <p>El carrito está vacío.</p>
+                <p className="text-center">El carrito está vacío.</p>
             ) : (
                 <>
                     <Row>
@@ -29,23 +28,27 @@ const Cart = () => {
                                         alt={item.name}
                                     />
                                     <Card.Body className="cart-card-body">
-                                        <Card.Title>{item.name}</Card.Title>
-                                        <Card.Text>Descripción: {item.description}</Card.Text>
-                                        <Card.Text>Cantidad: {item.quantity}</Card.Text>
-                                        <Card.Text>Precio: ${item.price}</Card.Text>
-                                        <Card.Text>Total: ${item.price * item.quantity}</Card.Text>
-                                        <Button variant="danger" onClick={() => removeFromCart(item.id)}>
-                                            Quitar del carrito
-                                        </Button>
+                                        <Card.Title className="text-center">{item.name}</Card.Title>
+                                        <Card.Text className="text-center">Descripción: {item.description}</Card.Text>
+                                        <Card.Text className="text-center">Cantidad: {item.quantity}</Card.Text>
+                                        <Card.Text className="text-center">Precio: ${item.price}</Card.Text>
+                                        <Card.Text className="text-center">Total: ${item.price * item.quantity}</Card.Text>
+                                        <div className="text-center">
+                                            <Button variant="danger" onClick={() => removeFromCart(item.id)}>
+                                                Quitar del carrito
+                                            </Button>
+                                        </div>
                                     </Card.Body>
                                 </Card>
                             </Col>
                         ))}
                     </Row>
-                    <h3>Total del Carrito: ${getTotal()}</h3>
-                    <Button variant="success" onClick={handleCheckout}>
-                        Ir a Pagar
-                    </Button>
+                    <h5 className="text-center">Total del Carrito: ${getTotal()}</h5>
+                    <div className="text-center">
+                        <Button variant="success" onClick={handleCheckout}>
+                            Ir a Pagar
+                        </Button>
+                    </div>
                 </>
             )}
         </Container>
