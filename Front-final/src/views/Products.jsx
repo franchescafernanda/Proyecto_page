@@ -7,9 +7,13 @@ import { useAuth } from "../context/AuthContext";
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [quantities, setQuantities] = useState({});
+    const [favorites, setFavorites] = useState(() => {
+        const savedFavorites = localStorage.getItem('favorites');
+        return savedFavorites ? JSON.parse(savedFavorites) : [];
+    });
     const navigate = useNavigate();
     const { addToCart } = useCart();
-    const { user } = useAuth(); // Obtiene el usuario del contexto de autenticación
+    const { user } = useAuth(); // Obtén información del usuario
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -32,20 +36,16 @@ const Products = () => {
     }, []);
 
     const handleDetailsClick = (productId) => {
-        if (productId) {
-            navigate(`/productDetails/${productId}`);
-        } else {
-            console.error('Product ID is undefined');
-        }
+        navigate(`/productDetails/${productId}`);
     };
 
     const handleAddToCart = (product) => {
         if (!user) {
             alert('Por favor, inicia sesión para agregar productos al carrito.');
-            navigate('/login'); // envia al usuario a iniciar de sesión
+            navigate('/login');
             return;
         }
-        
+
         const quantity = quantities[product.id_productos];
         if (quantity > 0) {
             addToCart({ ...product, quantity });
@@ -53,6 +53,23 @@ const Products = () => {
             setQuantities({ ...quantities, [product.id_productos]: 0 });
         } else {
             alert('Por favor, selecciona una cantidad mayor a 0.');
+        }
+    };
+
+    const addFavorite = (productId) => {
+        if (!user) {
+            alert('Por favor, inicia sesión para agregar a favoritos.');
+            navigate('/login');
+            return;
+        }
+
+        if (!favorites.includes(productId)) {
+            const updatedFavorites = [...favorites, productId];
+            setFavorites(updatedFavorites);
+            localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+            alert('Producto agregado a favoritos.');
+        } else {
+            alert('Este producto ya está en tus favoritos.');
         }
     };
 
@@ -107,6 +124,12 @@ const Products = () => {
                                     >
                                         Agregar al carrito
                                     </Button>
+                                    <Button
+                                        variant="outline-danger"
+                                        onClick={() => addFavorite(product.id_productos)}
+                                    >
+                                        Agregar a favoritos {/* cambiar texto por un corazon */}
+                                    </Button> 
                                 </div>
                             </Card.Body>
                         </Card>

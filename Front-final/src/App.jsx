@@ -16,6 +16,7 @@ import Checkout from "./views/Checkout";
 import { CartProvider } from './views/CartContext';
 import "./App.css";
 import { AuthProvider } from "./context/AuthContext";
+import Favorites from "./views/Favorites";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
                 <Route path="/checkout" element={<Checkout/>} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/favorites" element={<Favorites />} />
                 <Route path="*" element={<NotFound />} />
                 </Routes>
                 <Footer />

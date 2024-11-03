@@ -21,8 +21,8 @@ const UserDropdown = () => {
         <LinkContainer to="/addProducts">
           <DropdownItem>Publicaciones</DropdownItem>
         </LinkContainer>
-        <LinkContainer to="/orders">
-          <DropdownItem>Mis Ordenes</DropdownItem>
+        <LinkContainer to="favorites">
+          <DropdownItem>Favoritos</DropdownItem>
         </LinkContainer>
       </DropdownMenu>
     </Dropdown>

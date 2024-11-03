@@ -66,7 +66,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Formulario de contacto */}
+      {/* Formulario de contacto no me esta funcionando*/}
       <div className="contact-form">
         <h2>Contáctanos</h2>
         <form onSubmit={handleSubmit}>
