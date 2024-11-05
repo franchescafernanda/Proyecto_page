@@ -95,13 +95,20 @@ const Products = () => {
             <Row>
                 {products.map((product) => (
                     <Col key={product.id_productos} sm={12} md={6} lg={4}>
-                        <Card className="mb-4">
+                        <Card className="mb-4" style={{ position: 'relative' }}>
                             <Card.Img
                                 className="photo"
                                 variant="top"
                                 src={product.image_url}
                                 alt={product.nombre}
                             />
+                            <Button
+                                className="favorite-button"
+                                variant="outline-danger"
+                                onClick={() => addFavorite(product.id_productos)}
+                            >
+                                ♡ {/* Cambiar texto por un corazón */}
+                            </Button>
                             <Card.Body>
                                 <Card.Title>{product.nombre}</Card.Title>
                                 <Card.Text>{product.descripcion}</Card.Text>
@@ -124,12 +131,6 @@ const Products = () => {
                                     >
                                         Agregar al carrito
                                     </Button>
-                                    <Button
-                                        variant="outline-danger"
-                                        onClick={() => addFavorite(product.id_productos)}
-                                    >
-                                        Agregar a favoritos {/* cambiar texto por un corazon */}
-                                    </Button> 
                                 </div>
                             </Card.Body>
                         </Card>
