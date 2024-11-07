@@ -1,5 +1,4 @@
 /*Navbar*/
-
 .Navbar {
     background-color: rgb(205, 19, 118);
     width: 100%;
@@ -268,6 +267,7 @@
 /*Registro*/
 .register-form {
   max-width: 400px;
+  height: 420px;
   margin: 50px auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -318,7 +318,7 @@
 
 
 /*login*/
-.login {
+.login { /*lograr que ocupe la pagina hacia abajo*/
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;

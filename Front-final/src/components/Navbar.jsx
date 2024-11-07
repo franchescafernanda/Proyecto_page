@@ -47,8 +47,7 @@ function NavbarPlantiv() {
             <UserDropdown />
             <p
               onClick={handleLogout} className="salir"
-            >Salir</p>
-            {/* <img src={logout_icon} alt="logout_icon" /> */}
+            >📤</p>
           </Nav>
         </Container>
       </Navbar>

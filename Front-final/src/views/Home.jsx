@@ -35,7 +35,7 @@ const Home = () => {
       <br />
 
       <div className="store-intro">
-        <h2>Bienvenido a Nuestra Tienda</h2>
+        <h2>🌸 Bienvenido a Nuestra Tienda 🌸</h2>
         <p>
           En un pequeño rincón de la ciudad, donde la moda se encuentra con la
           pasión, nace nuestra tienda. Imagina un lugar donde cada prenda, cada
@@ -47,7 +47,7 @@ const Home = () => {
         </p>
         <h3>Un Viaje de Estilo</h3>
         <p>
-          Cada colección refleja la diversidad y la creatividad de quienes la
+          Cada prenda refleja la diversidad y la creatividad de quienes la
           llevan. Queremos que cada cliente se sienta especial, como si
           estuviera eligiendo una pieza de arte que resuena con su personalidad.
         </p>
