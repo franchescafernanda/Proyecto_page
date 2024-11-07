@@ -1,8 +1,8 @@
--- Active: 1724450487622@@127.0.0.1@5432@tienda_mascotas
+-- Active: 1724450487622@@127.0.0.1@5432@tienda_franchesca
 -- Crear tablas de la base de datos
 
-CREATE DATABASE tienda_mascotas
-\c tienda_mascotas
+CREATE DATABASE tienda_franchesca
+\c tienda_franchesca
 
 CREATE TABLE usuarios (
   id_user SERIAL PRIMARY KEY,
