@@ -26,6 +26,7 @@ const Login = () => {
     }
 
 return (
+    <div className="cont-login">
     <Container className="login">
         <form onSubmit={handleSubmit}>
         <h2>Iniciar sesión</h2>
@@ -49,6 +50,7 @@ return (
         {error && <div className="alert alert-info">{error}</div>}
         {user && <div>Usuario logueado: {user.nombre} {user.apellido}</div>} 
     </Container>
+    </div>
 );
 };
 

@@ -53,6 +53,9 @@ const Profile = () => {
   return (
     <div className="profile-container">
       <h1>Mi Perfil</h1>
+      <div className="profile-picture"> {/* añadido ultimamente */}
+        <img src="https://placehold.co/100x100" alt="Profile Picture" />
+      </div>
       {isEditing ? (
         <form onSubmit={handleSubmit}>
           <div>
