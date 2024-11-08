@@ -1,35 +1,60 @@
+// src/views/Checkout.js
 import React from 'react';
-import { Container, Form, Button, Row } from 'react-bootstrap';
+import { useCart } from '../views/CartContext';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
+    const { cart, getTotal } = useCart();
+    const navigate = useNavigate();
+
+    const handleGoBack = () => {
+        navigate('/cart');
+    };
+
+    const handlePrint = () => {
+        window.print();
+    };
+
     return (
-        <Container className='checkout'>
-            <h2>Realiza tú pago</h2>
-            <Form>
-                <Form.Group controlId="formCardHolder">
-                    <Form.Label>Nombre del Titular</Form.Label>
-                    <Form.Control type="text" placeholder="Nombre del Titular" />
-                </Form.Group>
-                <Form.Group controlId="formCardNumber">
-                    <Form.Label>Número de Tarjeta</Form.Label>
-                    <Form.Control type="text" placeholder="Número de Tarjeta" />
-                </Form.Group>
-                <Row>
-                    <Form.Group controlId="formExpirationDate" className="col-md-6">
-                        <Form.Label>Fecha de Expiración</Form.Label>
-                        <Form.Control type="text" placeholder="MM/AA" />
-                    </Form.Group>
-                    <Form.Group controlId="formCVV" className="col-md-6">
-                        <Form.Label>CVV</Form.Label>
-                        <Form.Control type="text" placeholder="CVV" />
-                    </Form.Group>
-                </Row>
-                <Button variant="primary" type="submit">
-                    Pagar
-                </Button>
-            </Form>
+        <Container>
+            <h2 className="text-center">Boucher de Compra</h2>
+            {cart.length === 0 ? (
+                <p className="text-center">No hay productos en el carrito.</p>
+            ) : (
+                <>
+                    <Row>
+                        {cart.map((item) => (
+                            <Col key={item.id} sm={12} md={6} lg={4}>
+                                <Card className="mb-4 checkout-card">
+                                    <Card.Img
+                                        variant="top"
+                                        src={item.image_url}
+                                        alt={item.name}
+                                    />
+                                    <Card.Body className="checkout-card-body">
+                                        <Card.Title className="text-center">{item.name}</Card.Title>
+                                        <Card.Text className="text-center">Cantidad: {item.quantity}</Card.Text>
+                                        <Card.Text className="text-center">Precio: ${item.price}</Card.Text>
+                                        <Card.Text className="text-center">Subtotal: ${item.price * item.quantity}</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        ))}
+                    </Row>
+                    <h5 className="text-center">Total de la Compra: ${getTotal()}</h5>
+                    <div className="text-center mt-4">
+                        <Button variant="primary" onClick={handleGoBack} className="me-2">
+                            Volver al Carrito
+                        </Button>
+                        <Button variant="success" onClick={handlePrint}>
+                            Imprimir Boucher
+                        </Button>
+                    </div>
+                </>
+            )}
         </Container>
     );
-}
+};
 
 export default Checkout;

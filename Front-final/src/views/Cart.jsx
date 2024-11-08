@@ -45,8 +45,8 @@ const Cart = () => {
                     </Row>
                     <h5 className="text-center">Total del Carrito: ${getTotal()}</h5>
                     <div className="text-center">
-                        <Button variant="success" onClick={handleCheckout}>
-                            Ir a Pagar
+                        <Button variant="primary" onClick={handleCheckout}>
+                            Boucher de compra
                         </Button>
                     </div>
                 </>

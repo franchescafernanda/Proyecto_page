@@ -430,6 +430,10 @@
   border-bottom: none;
 }
 
+.profile-picture {
+  text-align: center;
+}
+
 .profile-container button {
   display: block;
   width: 100%;
