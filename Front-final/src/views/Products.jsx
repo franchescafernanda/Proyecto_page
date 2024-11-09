@@ -18,7 +18,7 @@ const Products = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('http://localhost:3000/api/productos');
+                const response = await fetch('http://localhost:3000/api/productos'); //cambiar la URL
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
                 setProducts(data);
