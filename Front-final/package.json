@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "node server.js"
+    "start": "node proyecto_page/Front-final/server.js"
   },
   "dependencies": {
     "@eslint/config-array": "^0.18.0",
