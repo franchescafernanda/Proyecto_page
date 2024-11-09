@@ -1,9 +1,8 @@
-
 import { defineConfig } from 'vite';
 
 export default defineConfig({
   server: {
-    port: process.env.PORT || 4173, // Usa el puerto proporcionado por Render o 4173 por defecto
-    host: true, // Permite que la app sea accesible desde fuera de localhost
+    port: process.env.PORT || 10000,  // Render espera que sea 10000
+    host: '0.0.0.0',  // Esto asegura que la aplicación sea accesible desde el exterior
   },
 });
